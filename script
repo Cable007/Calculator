@@ -1,0 +1,191 @@
+const calculator = document.createElement("a");
+calculator.setAttribute("class", "styles__pageButton___1wFuu-camelCase");
+calculator.setAttribute("id", "calculator");
+calculator.innerHTML = `<i class="styles__pageIcon___3OSy9-camelCase fas fa-calculator" aria-hidden="true"></i><div class="styles__pageText___1eo7q-camelCase">Calculator</div>`;
+const bazaar = document.querySelector('a[href="/bazaar"]');
+bazaar.insertAdjacentElement("afterend", calculator);
+calculator.addEventListener("click", () => {
+    const calcOn = document.getElementById("calcModal");
+    if (calcOn) {
+        calcOn.style.display = calcOn.style.display === "none" ? "" : "none";
+    } else {
+        //and yes, i did take the panel html
+        const calcModal = document.createElement("div");
+        calcModal.setAttribute("id", "calcModal");
+        calcModal.setAttribute("class", "arts__chatModal___4JFsa-camelCase");
+        calcModal.style.transform = "translateX(0.000vw)";
+        calcModal.style.overflow = "hidden";
+        calcModal.style.width = "100%";
+        calcModal.style.zIndex = "4";
+        calcModal.innerHTML = `
+        <div class="styles__background___2J-JA-camelCase" style="z-index: -2;">
+               <div class="styles__blooksBackground___3oQ7Y-camelCase" style="background-image: url('/content/background.webp');"></div> 
+            </div>
+            <div class="arts__profileBody___eNPbH-camelCase" style="overflow-x:hidden;">
+                <div class="styles__header___1Amh6-camelCase" style="text-align: center;">Calculator</div>
+                <div class="styles__searchBoxHolder___1uLEf-camelCase">
+                    <div class="styles__searchContainer___1WB5F-camelCase">
+                        <input class="styles__searchInput___sVM-G-camelCase" id="search" type="search" placeholder="Search Blook or Item...">
+                        <i id="searchSearchButton" class="styles__searchIcon___3mM7Z-camelCase fas fa-search" role="button" tabindex="0"></i>
+                        <i id="searchFilterButton" class="styles__searchIcon___3mM7Z-camelCase fas fa-sliders-h" role="button" tabindex="0"></i>
+                        <i id="searchClearButton" class="styles__searchIcon___3mM7Z-camelCase fas fa-times" role="button" tabindex="0"></i>
+                    </div>
+                </div>
+                <div id="container" style="padding: 1rem;"></div>
+            </div>`;
+        document.body.append(calcModal);
+const hasCalculatorTutorialPoppedUp = localStorage.getItem("calculatorTutorialPoppedUp");
+    if (hasCalculatorTutorialPoppedUp === true) {
+        document.body.style.overflow = "hidden";
+        const tutorialPg1 = document.createElement("div");
+        tutorialPg1.classList.add('arts__modal___VpEAD-camelCase');
+        tutorialPg1.innerHTML = `<form class="styles__container___1BPm9-camelCase" style="width: 45vw"><div class="styles__text___KSL4--camelCase"><div style="font-family: Titan One, sans-serif; font-weight: 100; font-size: 1.5vw">This is a blook/item info page made by Cable</div></div><div class="styles__text___KSL4--camelCase" style="font-size: 0.9vw; padding: 0 1.5vw; color: rgba(255, 255, 255, 0.7); margin: -0.5vw 0 0.5vw 0">This Calculator is made to display information about a blook (or item).</div><div class="styles__text___KSL4--camelCase" style="font-size: 0.9vw; padding: 0 1.5vw; color: rgba(255, 255, 255, 0.7); margin: 0.5vw 0">Click "Continue" to begin this tutorial.</div><div class="styles__holder___3CEfN-camelCase"><div class="styles__buttonContainer___2EaVD-camelCase"><div class="styles__button___1_E-G-camelCase styles__button___3zpwV-camelCase" role="button" tabindex="0"><div class="styles__shadow___3GMdH-camelCase"></div><div class="styles__edge___3eWfq-camelCase" style="background-color: var(--primary);"></div><div class="styles__front___vcvuy-camelCase styles__buttonInside___39vdp-camelCase" style="background-color: var(--accent);">Continue</div></div></div></div><input type="submit" style="opacity: 0; display: none;"/></form>`;
+        const tutorialPg2 = document.createElement("div");
+        tutorialPg2.classList.add('arts__modal___VpEAD-camelCase');
+        tutorialPg2.innerHTML = `<form class="styles__container___1BPm9-camelCase" style="width: 40vw"><div class="styles__text___KSL4--camelCase"><div style="font-family: Titan One, sans-serif; font-weight: 100; font-size: 2vw">Using the filter</div></div><div class="styles__text___KSL4--camelCase" style="font-size: 0.9vw; padding: 0 1.5vw; color: rgba(255, 255, 255, 0.7); margin: -1vw 0 0.5vw 0; font-weight: 600">There are 2 options for filters: <br>Blooks and Items</br></div><img style="width: 30vw; border-radius: 5px; box-shadow: 0 0 1vw rgba(0, 0, 0, 0.4);" src="https://i.postimg.cc/MTZ0GrcQ/Screenshot-2025-06-18-181933.png"></img><div class="styles__holder___3CEfN-camelCase"><div class="styles__buttonContainer___2EaVD-camelCase"><div class="styles__button___1_E-G-camelCase styles__button___3zpwV-camelCase" role="button" tabindex="0"><div class="styles__shadow___3GMdH-camelCase"></div><div class="styles__edge___3eWfq-camelCase" style="background-color: var(--primary);"></div><div class="styles__front___vcvuy-camelCase styles__buttonInside___39vdp-camelCase" style="background-color: var(--accent);">Next</div></div></div></div><input type="submit" style="opacity: 0; display: none;"/></form>`;
+        const tutorialPg3 = document.createElement("div");
+        tutorialPg3.classList.add('arts__modal___VpEAD-camelCase');
+        tutorialPg3.innerHTML = `<form class="styles__container___1BPm9-camelCase" style="width: 40vw"><div class="styles__text___KSL4--camelCase"><div style="font-family: Titan One, sans-serif; font-weight: 100; font-size: 2vw">Using the calculator</div></div><div class="styles__text___KSL4--camelCase" style="font-size: 0.9vw; padding: 0 1.5vw; color: rgba(255, 255, 255, 0.7); margin: -1vw 0 0.5vw 0; font-weight: 600">Now that you have the filter you like, it's time to use the calculator! Type a blook (or item name) into the search bar and click enter or the magnifying glass button</div><img style="width: 35vw; border-radius: 5px; box-shadow: 0 0 1vw rgba(0, 0, 0, 0.4);" src="https://i.postimg.cc/hv8dRxP6/Screenshot-2025-06-17-205811.png"></img><div class="styles__holder___3CEfN-camelCase"><div class="styles__buttonContainer___2EaVD-camelCase"><div class="styles__button___1_E-G-camelCase styles__button___3zpwV-camelCase" role="button" tabindex="0"><div class="styles__shadow___3GMdH-camelCase"></div><div class="styles__edge___3eWfq-camelCase" style="background-color: var(--primary);"></div><div class="styles__front___vcvuy-camelCase styles__buttonInside___39vdp-camelCase" style="background-color: var(--accent);">Try it out!</div></div></div></div><input type="submit" style="opacity: 0; display: none;"/></form>`;
+        document.body.appendChild(tutorialPg1);
+    const nextBtn1 = tutorialPg1.querySelector('.styles__button___1_E-G-camelCase');
+    nextBtn1.addEventListener("click", () => {
+        tutorialPg1.remove();
+        document.body.appendChild(tutorialPg2);
+    const nextBtn2 = tutorialPg2.querySelector('.styles__button___1_E-G-camelCase');
+    nextBtn2.addEventListener("click", () => {
+        tutorialPg2.remove();
+        document.body.appendChild(tutorialPg3);
+    const nextBtn3 = tutorialPg3.querySelector('.styles__button___1_E-G-camelCase');
+    nextBtn3.addEventListener("click", () => {
+      tutorialPg3.remove();
+        localStorage.setItem("calculatorTutorialPoppedUp", true);
+        document.body.style.overflow = "auto";
+    });
+  });
+});
+};
+setTimeout(() => {
+    const srchInput = document.getElementById("search");
+    const srchBtn = document.getElementById("searchSearchButton");
+    const clrBtn = document.getElementById("searchClearButton");
+    function queryB(usersearch) {
+        const Ufilter = localStorage.getItem("filterChoice") || "blooks";
+        const data = blacket[Ufilter] || {};
+        const matches = Object.entries(data).filter(([key]) =>
+            key.toLowerCase().includes(usersearch.toLowerCase())
+        );
+        show(matches);
+    }
+function show(results) {
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+    container.className = "styles__gamesContainer___3KGOH-camelCase";
+    const hold = document.createElement("div");
+    hold.style.transform = "scale(1.4)";
+    hold.style.transformOrigin = "top left";
+    hold.style.width = "65%";
+    hold.style.boxSizing = "border-box";
+    hold.style.position = "absolute";
+    hold.style.left = "5vw";
+    if (!results.length) {
+        hold.innerHTML = `
+         <div class="styles__gameHolder___S1vDm-camelCase">
+                <div class="styles__container___2WtUL-camelCase">
+                    <img class="styles__blook___2HjCj-camelCase" src="/content/blooks/Error.webp" alt="Error" style="height: auto;">
+                    <div class="styles__textContainer___1TweY-camelCase">
+                        <div class="styles__setTitle___2SFni-camelCase">No matches found.</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.appendChild(hold);
+        return;
+    }
+    results.forEach(([entry, data]) => {
+        let src;
+        if (entry === "24 Hour Booster") {
+            src = data.image.replace(/\.webp$/i, ".gif");
+        } else {
+            src = data.image;
+        }
+        let rare;
+        if (data.rarity === "Iridescent") {
+            rare = "styles__setDescription___fj983-camelCase rainbow";
+        } else {
+            rare = "styles__setDescription___fj983-camelCase"
+        };        
+        const holder = `
+            <div class="styles__gameHolder___S1vDm-camelCase">
+                <div class="styles__container___2WtUL-camelCase">
+                    <img class="styles__blook___2HjCj-camelCase" src="${src}" alt="${entry}" style="height: auto;">
+                    <div class="styles__textContainer___1TweY-camelCase">
+                        <div class="styles__setTitle___2SFni-camelCase">${entry}</div>
+                        ${data.rarity && blacket.rarities[data.rarity] ? `<div class="${rare}" style="color: ${blacket.rarities[data.rarity] ? blacket.rarities[data.rarity].color : "white"};">${data.rarity}</div>` : ""}
+                    </div>
+                </div>
+            </div>
+        `;
+        hold.insertAdjacentHTML("beforeend", holder);
+    });
+    container.appendChild(hold);
+}
+    function run () {
+        const query = srchInput.value.trim();
+        if (query) queryB(query);
+    };
+    srchBtn.addEventListener("click", run);
+    srchInput.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") run()
+    });
+    clrBtn.addEventListener("click", () => {
+        srchInput.value = "";
+    });
+}, 0);
+    sFilters();
+    }
+});
+function sFilters() {
+    const sFB = document.getElementById("searchFilterButton");
+    sFB.addEventListener("click", () => {
+        const FM = document.createElement("div");
+        FM.innerHTML = `
+            <div class="arts__modal___VpEAD-camelCase" style="z-index:6;">
+                <div class="styles__container___1BPm9-camelCase">
+                    <div class="styles__text___KSL4--camelCase">Setting filters...</div>
+                    <div class="styles__holder___3CEfN-camelCase">
+                        <div class="styles__numRow___xh98F-camelCase">
+                            <select id="filterCategorySelect" class="styles__select___4kC90-camelCase">
+                                <option value="blooks">Blooks</option>
+                                <option value="items">Items</option>
+                            </select>
+                        </div>
+                        <div class="styles__buttonContainer___2EaVD-camelCase">
+                            <div id="saveButton" class="styles__button___1_E-G-camelCase styles__button___3zpwV-camelCase" role="button" tabindex="0">
+                                <div class="styles__shadow___3GMdH-camelCase"></div>
+                                <div class="styles__edge___3eWfq-camelCase" style="background-color: var(--accent);"></div>
+                                <div class="styles__front___vcvuy-camelCase styles__buttonInside___39vdp-camelCase" style="background-color: var(--accent);">Save</div>
+                            </div>
+                            <div id="cancelButton" class="styles__button___1_E-G-camelCase styles__button___3zpwV-camelCase" role="button" tabindex="0">
+                                <div class="styles__shadow___3GMdH-camelCase"></div>
+                                <div class="styles__edge___3eWfq-camelCase" style="background-color: var(--accent);"></div>
+                                <div class="styles__front___vcvuy-camelCase styles__buttonInside___39vdp-camelCase" style="background-color: var(--accent);">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        document.body.appendChild(FM);
+        setTimeout(() => {
+            const filter = document.getElementById("filterCategorySelect");
+            const saved = localStorage.getItem("filterChoice");
+            filter.value = saved || "blooks";
+            document.getElementById("saveButton").addEventListener("click", () => {
+                localStorage.setItem("filterChoice", filter.value);
+                FM.remove();
+            });
+            document.getElementById("cancelButton").addEventListener("click", () => {
+                FM.remove();
+            });
+        }, 0);
+    });
+}
