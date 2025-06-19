@@ -35,7 +35,7 @@ calculator.addEventListener("click", () => {
             </div>`;
         document.body.append(calcModal);
 const hasCalculatorTutorialPoppedUp = localStorage.getItem("calculatorTutorialPoppedUp");
-    if (hasCalculatorTutorialPoppedUp === true) {
+    if (hasCalculatorTutorialPoppedUp === false) {
         document.body.style.overflow = "hidden";
         const tutorialPg1 = document.createElement("div");
         tutorialPg1.classList.add('arts__modal___VpEAD-camelCase');
